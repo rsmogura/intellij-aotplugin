@@ -1,0 +1,26 @@
+compileOnly io.micronaut.aop.*
+compileOnly io.micronaut.cache.*
+compileOnly io.micronaut.context.*
+compileOnly io.micronaut.core.*
+compileOnly io.micronaut.discovery.*
+compileOnly io.micronaut.function.*
+compileOnly io.micronaut.health.*
+compileOnly io.micronaut.http.*
+compileOnly io.micronaut.inject.*
+compileOnly io.micronaut.jackson.*
+compileOnly io.micronaut.logging.*
+compileOnly io.micronaut.reactive.*
+compileOnly io.micronaut.retry.intercept.DefaultRetryInterceptor
+compileOnly io.micronaut.retry.intercept.RecoveryInterceptor
+compileOnly io.micronaut.runtime.*
+compileOnly io.micronaut.scheduling.*
+compileOnly io.micronaut.validation.*
+compileOnly io.micronaut.web.router.*
+compileOnly io.micronaut.websocket.*
+
+compileOnly io.netty.bootstrap.*
+compileOnly io.netty.buffer.*
+compileOnly io.netty.channel.*
+compileOnly io.netty.handler.codec.*
+compileOnly io.netty.handler.logging.LogLevel
+compileOnly io.netty.util.*

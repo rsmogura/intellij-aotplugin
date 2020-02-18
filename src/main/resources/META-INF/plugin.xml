@@ -1,0 +1,71 @@
+<idea-plugin>
+    <id>eu.smogura.intellij.aotplugin</id>
+    <name>Ahead of time compilation (AOT) support</name>
+    <version>0.1.0</version>
+    <vendor url="https://github.com/rsmogura/intellij-aotplugin">
+        Rado Smogura
+    </vendor>
+
+    <description><![CDATA[
+    <h1>Ahead of time compilation (AOT)</h1> is a feature of JDK 9+ platforms
+    allowing compilation of Java classes and JARs to native libraries. Such
+    library can be used with application to reduce startup time
+    and CPU consumption comparing to JIT.
+
+    <br />
+
+    Tests shows that AOT can slightly reduce startup time (0-24%),
+    and significantly reduces CPU and resources usage during application startup,
+    as Just In Time (JIT) compilation and interpreter is less often used.
+
+    <br />
+    <h1>Usage</h1>
+    The plugin supports only <i>Application</i> configuration and was tested on OSX.
+    <br />
+    In order to use AOT enable it on <b>AOT tab</b> in the Application Run Configuration.
+    </br>
+    To generate AOT library search for AOT action - this action will generate AOT
+    for currently active run configuration.
+
+    <h1>Todo</h1>
+    <ul>
+        <li>passing custom parameters to jaotc;</li>
+        <li>stripping debug symbols from library;</li>
+        <li>
+            detecting changes to dependencies and displaying warnings,
+            when AOT library should be re-generated.
+        </li>
+
+    <h1>Bugs & suggestions</h1>
+    Open issue at plugin GitHub page -
+    <a href="https://github.com/rsmogura/intellij-aotplugin">
+        https://github.com/rsmogura/intellij-aotplugin
+    </a>
+    ]]></description>
+
+    <change-notes><![CDATA[
+        <ul>
+            <li>0.1.0 - 2020-02-18</li>
+            <ul>
+                <li>Basic support for AOT</li>
+            <ul>
+        </ul>
+    ]]></change-notes>
+
+    <depends>com.intellij.modules.platform</depends>
+
+    <idea-version since-build="IC-2019.3.2" />
+    <extensions defaultExtensionNs="com.intellij">
+        <runConfigurationExtension implementation="eu.smogura.intellij.aotplugin.AotRunConfigurationExtension" />
+
+        <applicationInitializedListener implementation="eu.smogura.intellij.aotplugin.idelisteners.AotAppInitListener" />
+    </extensions>
+
+    <actions>
+        <action class="eu.smogura.intellij.aotplugin.PrepareAotForActiveConfigurationAction"
+                text="AOT: Prepare Ahead of Time (AOT) compilation library"
+                description="Prepares AOT library for currently selected run configuration">
+            <keyboard-shortcut first-keystroke="control alt A" keymap="$default"/>
+        </action>
+    </actions>
+</idea-plugin>

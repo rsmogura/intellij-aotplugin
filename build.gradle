@@ -1,0 +1,48 @@
+plugins {
+    id 'java'
+    id 'checkstyle'
+    id 'org.jetbrains.intellij' version '0.4.16'
+}
+
+group 'eu.smogura.intellij'
+version '0.1'
+
+sourceCompatibility = 1.11
+
+checkstyle {
+//    configFile = new File("config/checkstyle/google_checks.xml")
+    toolVersion = "8.29"
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compileOnly 'org.projectlombok:lombok:1.18.12'
+    annotationProcessor 'org.projectlombok:lombok:1.18.12'
+
+    testCompile group: 'org.junit.jupiter', name: 'junit-jupiter-api', version: '5.6.0'
+    testCompile group: 'org.junit.jupiter', name: 'junit-jupiter-engine', version: '5.6.0'
+}
+
+// See https://github.com/JetBrains/gradle-intellij-plugin/
+intellij {
+    version 'IC-2019.3.2'
+    type 'IC'
+    plugins = ['java']
+}
+
+patchPluginXml {
+//    changeNotes """
+//      Add change notes here.<br>
+//      <em>most HTML tags may be used</em>"""
+}
+
+test {
+    useJUnitPlatform()
+}
+
+runIde {
+    maxHeapSize = "3g"
+}
